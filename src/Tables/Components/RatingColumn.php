@@ -1,6 +1,6 @@
 <?php
 
-namespace Yepsua\Filament\Tables\Components;
+namespace Schuttelaar\Filament\Tables\Components;
 
 use Closure;
 use Filament\Tables\Columns\Column;
