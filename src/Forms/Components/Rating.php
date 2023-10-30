@@ -1,6 +1,6 @@
 <?php
 
-namespace Yepsua\Filament\Forms\Components;
+namespace Schuttelaar\Filament\Forms\Components;
 
 use Closure;
 use Filament\Forms\Components\Field;
