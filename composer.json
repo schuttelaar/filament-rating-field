@@ -1,6 +1,6 @@
 {
     "name": "schuttelaar/filament-rating-field",
-    "version": "3.0.0",
+    "version": "3.1.0",
     "description": "Rating field for the Filament forms, compatible with filament 3",
     "keywords": [
         "yepsua",
