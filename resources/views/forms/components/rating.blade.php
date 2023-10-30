@@ -1,12 +1,6 @@
-<x-forms::field-wrapper
-    :id="$getId()"
-    :label="$getLabel()"
-    :label-sr-only="$isLabelHidden()"
-    :helper-text="$getHelperText()"
-    :hint="$getHint()"
-    :hint-icon="$getHintIcon()"
-    :required="$isRequired()"
-    :state-path="$getStatePath()"
+<x-dynamic-component
+    :component="$getFieldWrapperView()"
+    :field="$field"
 >
     <div x-data="{
         state: $wire.{{ $applyStateBindingModifiers('entangle(\'' . $getStatePath() . '\')') }},
@@ -14,6 +8,7 @@
             @if($isDisabled())
                 return;
             @else
+                // unclear why, but following code doesn't execute if it isn't prepended with this comment
                 let target = $event.target.dataset.index ?  $event.target : $event.target.closest('.rating-item');
                 let index = target.dataset.index || false;
                 this.state = index;
@@ -123,4 +118,4 @@
             @endif
         </ul>
     </div>
-</x-forms::field-wrapper>
+</x-dynamic-component>
