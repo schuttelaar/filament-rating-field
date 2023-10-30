@@ -38,12 +38,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Yepsua\\Filament\\": "src"
+            "Schuttelaar\\Filament\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Yepsua\\Filament\\Tests\\": "tests"
+            "Schuttelaar\\Filament\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -62,7 +62,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Yepsua\\Filament\\FilamentRatingFieldServiceProvider"
+                "Schuttelaar\\Filament\\FilamentRatingFieldServiceProvider"
             ]
         }
     },
