@@ -1,12 +1,13 @@
 {
-    "name": "yepsua/filament-rating-field",
-    "description": "Ranting field for the Filament forms",
+    "name": "schuttelaar/filament-rating-field",
+    "version": 3.0.0,
+    "description": "Rating field for the Filament forms, compatible with filament 3",
     "keywords": [
         "yepsua",
         "laravel",
         "filament-rating-field"
     ],
-    "homepage": "https://github.com/yepsua/filament-rating-field",
+    "homepage": "https://github.com/schuttelaar/filament-rating-field",
     "license": "MIT",
     "authors": [
         {
