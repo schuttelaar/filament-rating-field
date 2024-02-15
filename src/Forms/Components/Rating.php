@@ -26,6 +26,7 @@ class Rating extends Field
     protected string $disabledCursor = 'not-allowed';
     protected string $clearIconTooltip = "";
     protected array $tooltips = [];
+    protected array $options = [];
 
     protected string $view = "filament-rating-field::forms.components.rating";
 
@@ -100,6 +101,22 @@ class Rating extends Field
         return $this;
     }
 
+    public function tooltips(array | Closure $tooltips): self
+    {
+        if (is_callable($tooltips)) {
+            $tooltips = $tooltips();
+        }
+        $this->min(1);
+        $this->max(sizeof($tooltips));
+        $this->tooltips = [];
+
+        foreach ($tooltips as $tooltip) {
+            $this->tooltips[] = $tooltip;
+        }
+
+        return $this;
+    }
+
     public function options(array | Closure $options): self
     {
         if (is_callable($options)) {
@@ -107,10 +124,10 @@ class Rating extends Field
         }
         $this->min(1);
         $this->max(sizeof($options));
-        $this->tooltips = [];
+        $this->options = [];
 
         foreach ($options as $option) {
-            $this->tooltips[] = $option;
+            $this->options[] = $option;
         }
 
         return $this;
@@ -119,6 +136,11 @@ class Rating extends Field
     public function getTooltip(int $index): mixed
     {
         return $this->tooltips[$index - 1] ?? '';
+    }
+
+    public function getOption(int $index): mixed
+    {
+        return $this->options[$index - 1] ?? '';
     }
 
     public function width(int | Closure $width): self

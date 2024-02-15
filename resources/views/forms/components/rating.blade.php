@@ -17,11 +17,12 @@
         },
         draw(index) {
             let tag1 = $refs['{{$getRefId('defaultIcon')}}'].getElementsByTagName('svg')[0];
-            this.redraw(tag1, {{ $getMax() }});
+            this.redraw(tag1, {{ $getMax() }}, '{{ $getColor() }}');
             let tag2 = $refs['{{$getRefId('selectedIcon')}}'].getElementsByTagName('svg')[0];
-            this.redraw(tag2, index);
+            this.redraw(tag2, index, 'white');
         },
-        redraw(templateTag, maxItems) {
+        redraw(templateTag, maxItems, color) {
+            console.log('color', color);
 
             for(let i=1; i <= maxItems; i++) {
                 if(!$refs['{{$getRefId('ratingIcons')}}_' + i]) {
@@ -29,6 +30,10 @@
                 }
 
                 let ratingTag = $refs['{{$getRefId('ratingIcons')}}_' + i].getElementsByTagName('svg')[0];
+
+                let number = $refs['{{$getRefId('ratingIcons')}}_' + i].getElementsByTagName('div')[0];
+
+                number.style.color = color;
 
                 while(ratingTag.attributes.length > 0){
                     ratingTag.removeAttribute(ratingTag.attributes[0].name);
@@ -94,7 +99,7 @@
         <ul class="ml-auto flex">
         @for ($i = $getMin(); $i <= $getMax(); $i++)
             <li
-                class="rating-item"
+                class="rating-item relative"
                 x-on:mouseenter="mouseoverHandler"
                 x-on:mouseleave="mouseleaveHandler"
                 data-index="{{ $i }}"
@@ -103,6 +108,17 @@
                 @include('filament-rating-field::forms.components._rating-item', [
                     'component' => $i <= $getState() ? $getSelectedIcon() : $getIcon(),
                 ])
+                <div class="absolute" style="
+                font-weight: bold;
+                margin-left: -.125rem;
+                left:50%;
+                top:50%;
+                -webkit-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                pointer-events: none;
+                color:{{$i <= $getState() ? 'white' : $getColor()}}">
+                {{ $getOption($i) }}</div>
             </li>
         @endfor
             @if($isClearable())
