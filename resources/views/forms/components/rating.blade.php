@@ -22,7 +22,6 @@
             this.redraw(tag2, index, 'white');
         },
         redraw(templateTag, maxItems, color) {
-            console.log('color', color);
 
             for(let i=1; i <= maxItems; i++) {
                 if(!$refs['{{$getRefId('ratingIcons')}}_' + i]) {
