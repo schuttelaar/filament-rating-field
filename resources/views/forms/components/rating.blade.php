@@ -107,7 +107,7 @@
                 @include('filament-rating-field::forms.components._rating-item', [
                     'component' => $i <= $getState() ? $getSelectedIcon() : $getIcon(),
                 ])
-                <div class="absolute" style="
+                <div class="text-sm absolute" style="
                 font-weight: bold;
                 margin-left: -.125rem;
                 left:50%;
